@@ -1,0 +1,124 @@
+<div class="container">
+  <header class="header">
+    <h1>{{ title }}</h1>
+    <p>Multiple PDF generation methods: jsPDF autoTable and HTML template</p>
+  </header>
+
+
+
+  <div class="content">
+    @if (error) {
+      <div class="error-message">
+        <p>{{ error }}</p>
+        <button class="btn btn-secondary" (click)="loadUsers()">Retry</button>
+      </div>
+    }
+
+    @if (loading) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Loading user data...</p>
+      </div>
+    }
+
+
+    <!-- Department Data Table Section -->
+    <div class="table-section">
+      <h2>Department Review Table (Sample Data)</h2>
+      <div class="table-actions">
+        <button 
+          class="btn btn-info" 
+          (click)="downloadDepartmentPdfFromHtml()">
+          Download Department PDF (HTML Template)
+        </button>
+        <button 
+          class="btn btn-warning" 
+          (click)="downloadDepartmentPdfWithAutoTable()">
+          Download Department PDF (autoTable)
+        </button>
+        <button 
+          class="btn btn-success" 
+          (click)="downloadComplianceRiskAssessmentPdf()">
+          Download Compliance Risk Assessment PDF
+        </button>
+      </div>
+      <div class="table-container"  id="department-table">
+        <table class="department-table">
+          <thead>
+            <tr>
+              <th>Department/Entity</th>
+              <th>Overall Residual Rating</th>
+              <th>Average Control Effectiveness (CE)</th>
+              <th>Review Status</th>
+              <th>Review Date</th>
+              <th>Reviewer</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (dept of departments; track dept.id) {
+              <tr>
+                <td>{{ dept.department }}</td>
+                <td>
+                  <span [class]="getRatingColorClass(dept.overallResidualRating)">
+                    {{ dept.overallResidualRating }}
+                  </span>
+                </td>
+                <td>{{ dept.averageControlEffectiveness }} ({{ dept.controlEffectivenessLabel }})</td>
+                <td>
+                  <a href="#" class="review-link">{{ dept.reviewStatus }}</a>
+                </td>
+                <td [class.overdue-date]="dept.isDateOverdue">{{ dept.reviewDate }}</td>
+                <td>{{ dept.reviewer }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Compliance Risk Assessment Table Section (matching the image) -->
+    <div class="table-section">
+      <h2>Compliance Risk Assessment 2023-2024</h2>
+      <div class="table-actions">
+        <button 
+          class="btn btn-primary" 
+          (click)="downloadComplianceRiskAssessmentPdf()">
+          Download Compliance Risk Assessment PDF
+        </button>
+      </div>
+      <div class="table-container" id="compliance-risk-table">
+        <table class="compliance-risk-table">
+          <thead>
+            <tr>
+              <th>Department/Entity</th>
+              <th>Residual Rating Status</th>
+              <th>Entity Head</th>
+              <th>Advisory Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (dept of departments; track dept.id) {
+              <tr>
+                <td class="department-link">{{ dept.department }}</td>
+                <td>
+                  <span [class]="getRatingColorClass(dept.overallResidualRating)">
+                    {{ dept.overallResidualRating }}
+                  </span>
+                </td>
+                <td>{{ dept.entityHead }}</td>
+                <td>{{ dept.advisoryRemarks }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <div class="risk-status-summary">
+          <div class="summary-label">Organizational Residual Risk Status:</div>
+          <div class="percentage-box">{{ complianceData.percentage }}%</div>
+          <div class="status-box" [ngClass]="complianceData.status.toLowerCase()">{{ complianceData.status }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet />
