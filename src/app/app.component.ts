@@ -57,20 +57,12 @@ export class AppComponent implements OnInit {
   }
 
   // User table PDF methods
-  downloadUserPdf(): void {
-    if (this.users.length > 0) {
-      this.pdfService.generateUserTablePdf(this.users);
-    }
-  }
+ 
 
   // Department table PDF methods
-  downloadDepartmentPdfFromHtml(): void {
-    this.pdfService.generateDepartmentTablePdfFromHtml('department-table');
-  }
+ 
 
-  downloadDepartmentPdfWithAutoTable(): void {
-    this.pdfService.generateDepartmentTablePdfWithAutoTable(this.departments);
-  }
+ 
 
   downloadComplianceRiskAssessmentPdf(): void {
     this.pdfService.generateComplianceRiskAssessmentPdf(this.complianceData, this.logoUrl);
