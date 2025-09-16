@@ -5,6 +5,7 @@ import { UserService } from './services/user.service';
 import { PdfService } from './services/pdf.service';
 import { User } from './models/user.model';
 import { Department, SAMPLE_DEPARTMENTS } from './models/department.model';
+import { FinanceRiskData, SAMPLE_FINANCE_RISK_DATA } from './models/finance-risk.model';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,9 @@ export class AppComponent implements OnInit {
     status: 'Critical',
     percentage: '42.85'
   };
+  
+  // Finance Risk Assessment data
+  financeRiskData: FinanceRiskData = SAMPLE_FINANCE_RISK_DATA;
   
   // Logo URL (can be set from external source)
   logoUrl: string = 'https://via.placeholder.com/80x30/00346B/FFFFFF?text=LOGO';
@@ -68,6 +72,11 @@ export class AppComponent implements OnInit {
     this.pdfService.generateComplianceRiskAssessmentPdf(this.complianceData, this.logoUrl);
   }
 
+  // Finance Risk Assessment PDF method
+  downloadFinanceRiskAssessmentPdf(): void {
+    this.pdfService.generateFinanceRiskAssessmentPdf(this.financeRiskData, this.logoUrl);
+  }
+
   // Helper method to get rating color class
   getRatingColorClass(rating: string): string {
     switch (rating) {
@@ -108,5 +117,14 @@ export class AppComponent implements OnInit {
   getOverallRiskStatusClass(): string {
     const status = this.getOverallRiskStatus();
     return status.toLowerCase();
+  }
+
+  // Helper methods for Finance Risk Assessment
+  getFinanceRiskStatusClass(status: string): string {
+    return status.toLowerCase();
+  }
+
+  getFinanceRiskRatingClass(rating: string): string {
+    return rating.toLowerCase();
   }
 }
