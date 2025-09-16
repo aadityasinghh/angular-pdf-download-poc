@@ -207,6 +207,7 @@
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  border: 1px solid #e0e0e0; // Light grey border around the table
   
   thead {
     background-color: #34495e;
@@ -219,24 +220,21 @@
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border-right: 1px solid #ffffff; // White border between columns
+      
+      &:last-child {
+        border-right: none; // Remove border from last column
+      }
     }
   }
   
   tbody {
     tr {
-      border-bottom: 1px solid #ecf0f1;
+      border-bottom: 1px solid #e0e0e0; // Light grey border between rows
       transition: background-color 0.2s ease;
       
       &:hover {
         background-color: #f8f9fa;
-      }
-      
-      &:nth-child(even) {
-        background-color: #f8f9fa;
-      }
-      
-      &:nth-child(even):hover {
-        background-color: #e9ecef;
       }
     }
     
@@ -245,6 +243,11 @@
       font-size: 14px;
       color: #2c3e50;
       vertical-align: top;
+      border-right: 1px solid #e0e0e0; // Light grey border between columns
+      
+      &:last-child {
+        border-right: none; // Remove border from last column
+      }
     }
   }
 }
@@ -284,6 +287,7 @@
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  border: 1px solid #e0e0e0; // Light grey border around the table
   
   thead {
     background-color: #00346B; // Updated to #00346B blue
@@ -296,24 +300,21 @@
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border-right: 1px solid #ffffff; // White border between columns
+      
+      &:last-child {
+        border-right: none; // Remove border from last column
+      }
     }
   }
   
   tbody {
     tr {
-      border-bottom: 1px solid #ecf0f1;
+      border-bottom: 1px solid #e0e0e0; // Light grey border between rows
       transition: background-color 0.2s ease;
       
       &:hover {
         background-color: #f8f9fa;
-      }
-      
-      &:nth-child(even) {
-        background-color: #f8f9fa;
-      }
-      
-      &:nth-child(even):hover {
-        background-color: #e9ecef;
       }
     }
     
@@ -322,6 +323,11 @@
       font-size: 14px;
       color: #2c3e50;
       vertical-align: top;
+      border-right: 1px solid #e0e0e0; // Light grey border between columns
+      
+      &:last-child {
+        border-right: none; // Remove border from last column
+      }
     }
   }
 }
@@ -398,6 +404,7 @@
   border-collapse: collapse;
   background-color: white;
   font-size: 12px;
+  border: 1px solid #e0e0e0; // Light grey border around the table
   
   thead {
     background-color: #00346B; // Updated to #00346B blue
@@ -410,13 +417,17 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border-right: 1px solid #ffffff; // White border between columns
+      
+      &:last-child {
+        border-right: none; // Remove border from last column
+      }
     }
   }
   
   tbody {
     tr {
-      border-bottom: 1px solid #ecf0f1;
-      transition: background-color 0.2s ease;
+      border-bottom: 1px solid #e0e0e0; // Light grey border between rows
       
       &:hover {
         background-color: #f8f9fa;
@@ -426,6 +437,11 @@
         padding: 10px 8px;
         text-align: center;
         vertical-align: middle;
+        border-right: 1px solid #e0e0e0; // Light grey border between columns
+        
+        &:last-child {
+          border-right: none; // Remove border from last column
+        }
         
         &.risk-link {
           text-align: left;

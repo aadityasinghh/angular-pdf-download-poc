@@ -65,14 +65,18 @@ export class PdfService {
           fontSize: 10,
           cellPadding: 6,
           overflow: 'linebreak',
-          textColor: [0, 0, 0] // Black text
+          textColor: [0, 0, 0], // Black text
+          lineColor: [224, 224, 224], // Light grey borders
+          lineWidth: 0.1
         },
         headStyles: {
           fillColor: [0, 52, 107], // Updated to #00346B blue
           textColor: [255, 255, 255], // White text
           fontStyle: 'bold',
           halign: 'center',
-          fontSize: 11
+          fontSize: 11,
+          lineColor: [255, 255, 255], // White borders between header columns
+          lineWidth: 0.1
         },
         // alternateRowStyles: {
         //   fillColor: [248, 249, 250] // Light gray for alternating rows
@@ -222,14 +226,18 @@ export class PdfService {
           fontSize: 8,
           cellPadding: 3,
           overflow: 'linebreak',
-          textColor: [0, 0, 0] // Black text
+          textColor: [0, 0, 0], // Black text
+          lineColor: [224, 224, 224], // Light grey borders
+          lineWidth: 0.1
         },
         headStyles: {
           fillColor: [0, 52, 107], // #00346B blue
           textColor: [255, 255, 255], // White text
           fontStyle: 'bold',
           halign: 'center',
-          fontSize: 9
+          fontSize: 9,
+          lineColor: [255, 255, 255], // White borders between header columns
+          lineWidth: 0.1
         },
         columnStyles: {
           0: { cellWidth: 20, halign: 'left' }, // Risk
