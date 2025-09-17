@@ -185,15 +185,15 @@ export class PdfService {
       doc.setFillColor(0, 52, 107);
       doc.rect(0, 0, pageWidth, 20, 'F');
       
-      // Add logo if provided
-      if (logoUrl) {
-        try {
-          // Add logo on the right side
-          doc.addImage(logoUrl, 'PNG', pageWidth - 60, 3, 50, 14);
-        } catch (error) {
-          console.warn('Could not load logo from URL:', logoUrl);
-        }
-      }
+      // // Add logo if provided
+      // if (logoUrl) {
+      //   try {
+      //     // Add logo on the right side
+      //     doc.addImage(logoUrl, 'PNG', pageWidth - 60, 3, 50, 14);
+      //   } catch (error) {
+      //     console.warn('Could not load logo from URL:', logoUrl);
+      //   }
+      // }
       
       doc.setTextColor(255, 255, 255); // White
       doc.setFontSize(18);

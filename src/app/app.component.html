@@ -14,12 +14,6 @@
       </div>
     }
 
-    @if (loading) {
-      <div class="loading">
-        <div class="spinner"></div>
-        <p>Loading user data...</p>
-      </div>
-    }
 
 
     <!-- Department Data Table Section -->
@@ -72,117 +66,7 @@
       </div>
     </div>
 
-    <!-- Compliance Risk Assessment Table Section (matching the image) -->
-    <div class="table-section">
-      <h2>Compliance Risk Assessment 2023-2024</h2>
-      <div class="table-actions">
-        <button 
-          class="btn btn-primary" 
-          (click)="downloadComplianceRiskAssessmentPdf()">
-          Download Compliance Risk Assessment PDF
-        </button>
-      </div>
-      <div class="table-container" id="compliance-risk-table">
-        <table class="compliance-risk-table">
-          <thead>
-            <tr>
-              <th>Department/Entity</th>
-              <th>Residual Rating Status</th>
-              <th>Entity Head</th>
-              <th>Advisory Remarks</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (dept of departments; track dept.id) {
-              <tr>
-                <td class="department-link">{{ dept.department }}</td>
-                <td>
-                  <span [class]="getRatingColorClass(dept.overallResidualRating)">
-                    {{ dept.overallResidualRating }}
-                  </span>
-                </td>
-                <td>{{ dept.entityHead }}</td>
-                <td>{{ dept.advisoryRemarks }}</td>
-              </tr>
-            }
-          </tbody>
-        </table>
-        <div class="risk-status-summary">
-          <div class="summary-label">Organizational Residual Risk Status:</div>
-          <div class="percentage-box">{{ complianceData.percentage }}%</div>
-          <div class="status-box" [ngClass]="complianceData.status.toLowerCase()">{{ complianceData.status }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Finance Risk Assessment Table Section -->
-    <div class="table-section">
-      <h2>Finance Risk Assessment 2023-2024</h2>
-      <div class="table-actions">
-        <button 
-          class="btn btn-primary" 
-          (click)="downloadFinanceRiskAssessmentPdf()">
-          Download Finance Risk Assessment PDF
-        </button>
-      </div>
-      <div class="table-container" id="finance-risk-table">
-        <table class="finance-risk-table">
-          <thead>
-            <tr>
-              <th>Risk</th>
-              <th>Source Type</th>
-              <th>Risk Status</th>
-              <th>RR Rating</th>
-              <th>Average Control Effectiveness (CE)</th>
-              <th>Risk Criticality Value (RCV)</th>
-              <th>Impact (I)</th>
-              <th>Likelihood (L)</th>
-              <th>Inherent Risk Value (IRV)</th>
-              <th>Residual Risk (RR)</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (risk of financeRiskData.risks; track risk.id) {
-              <tr>
-                <td class="risk-link">{{ risk.risk }}</td>
-                <td>{{ risk.sourceType }}</td>
-                <td>
-                  <span [class]="'status-' + getFinanceRiskStatusClass(risk.riskStatus)">
-                    {{ risk.riskStatus }}
-                  </span>
-                </td>
-                <td>
-                  <span [class]="'rating-' + getFinanceRiskRatingClass(risk.rrRating)">
-                    {{ risk.rrRating }}
-                  </span>
-                </td>
-                <td>{{ risk.averageControlEffectiveness }}</td>
-                <td>{{ risk.riskCriticalityValue }}</td>
-                <td>{{ risk.impact }}</td>
-                <td>{{ risk.likelihood }}</td>
-                <td>{{ risk.inherentRiskValue }}</td>
-                <td>{{ risk.residualRisk }}</td>
-              </tr>
-            }
-          </tbody>
-        </table>
-        <div class="finance-risk-summary">
-          <div class="left-summary">
-            <div class="summary-label">{{ financeRiskData.department }} Residual Risk Status:</div>
-            <div class="status-box" [ngClass]="getFinanceRiskStatusClass(financeRiskData.residualRiskStatus)">
-              {{ financeRiskData.residualRiskStatus }}
-            </div>
-          </div>
-          <div class="right-summary">
-            <div class="summary-label">{{ financeRiskData.department }} Residual Risk Rating (By Average):</div>
-            <div class="value-box">{{ financeRiskData.residualRiskRatingByAverage.value }}</div>
-            <div class="status-box" [ngClass]="getFinanceRiskStatusClass(financeRiskData.residualRiskRatingByAverage.status)">
-              {{ financeRiskData.residualRiskRatingByAverage.status }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </div>
 
